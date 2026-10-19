@@ -1,0 +1,174 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111c33;
+  --line: #22314f;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --ok: #22c55e;
+  --bad: #f43f5e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: var(--accent); }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #0b1224;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+.topbar nav { display: flex; gap: 16px; align-items: center; }
+.topbar nav a { text-decoration: none; }
+.link-btn { background: none; border: 0; color: var(--muted); cursor: pointer; font: inherit; }
+
+main {
+  flex: 1;
+  width: min(1100px, 100% - 32px);
+  margin: 24px auto;
+}
+
+.footer { text-align: center; color: var(--muted); font-size: 13px; padding: 16px; }
+.muted { color: var(--muted); }
+
+.progress {
+  height: 10px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 12px 0 4px;
+}
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--ok));
+  transition: width 0.4s;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.card-link {
+  display: block;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.card-link:hover { transform: translateY(-3px); border-color: var(--accent); }
+.card-link h3 { margin: 8px 0; }
+.card-link p { margin: 0 0 8px; font-size: 14px; color: var(--muted); }
+.badge { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.status { font-size: 13px; color: var(--muted); }
+
+.panel {
+  margin-bottom: 20px;
+  padding: 20px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.panel h2 { margin-top: 0; font-size: 20px; }
+.crumb { color: var(--muted); font-size: 14px; }
+
+pre {
+  padding: 12px;
+  overflow: auto;
+  background: #0b1224;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; color: #7dd3fc; }
+pre code { color: var(--text); }
+
+.editor { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.editor textarea {
+  width: 100%;
+  min-height: 280px;
+  padding: 12px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: var(--text);
+  background: #0b1224;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+}
+.editor iframe {
+  width: 100%;
+  min-height: 280px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.toolbar { display: flex; gap: 8px; margin: 8px 0; }
+button {
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #06121f;
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+button.secondary { color: var(--text); background: var(--line); }
+
+.quiz {
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.quiz legend { padding: 0 6px; font-weight: 600; }
+.quiz label { display: block; padding: 4px 0; cursor: pointer; }
+.result { margin-top: 12px; }
+.result p { margin: 6px 0; }
+
+.ok { color: var(--ok); }
+.bad { color: var(--bad); }
+.task { padding: 6px 0; }
+
+.banner {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid var(--ok);
+  border-radius: 8px;
+}
+
+.pager { display: flex; justify-content: space-between; margin: 8px 0 32px; }
+
+@media (max-width: 760px) {
+  .editor { grid-template-columns: 1fr; }
+  .topbar { flex-direction: column; gap: 8px; }
+}
